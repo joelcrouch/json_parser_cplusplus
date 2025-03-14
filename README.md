@@ -118,6 +118,77 @@ int main() {
 
 ```
 
+### Example #3:
+ToDO Maybe:  Modify CMakeLists.txt to install library:
+```
+# Add to  original CMakeLists.txt
+install(TARGETS json_parser DESTINATION lib)
+install(FILES json_parser.hpp DESTINATION include)
+
+```
+Rebuild and install using the '.sh' or '.ps1' files, bash or powershell.
+In teh project add '#include <json_parser.hpp>'
+and 
+g++ =std=c++17 main.pp -ljson_parser -o my_program
+
+
+
+#include "json_parser.hpp"
+#include <iostream>
+#include <fstream>
+
+int main() {
+    // Read JSON from a file
+    std::ifstream file("config.json");
+    if (!file.is_open()) {
+        std::cerr << "Failed to open file" << std::endl;
+        return 1;
+    }
+    
+    std::string jsonContent((std::istreambuf_iterator<char>(file)),
+                            std::istreambuf_iterator<char>());
+    file.close();
+    
+    try {
+        // Parse the JSON
+        JSONParser parser(jsonContent);
+        JSONValue config = parser.parse();
+        
+        // Use the parsed configuration
+        std::string serverAddress = config["server"]["address"].asString();
+        int port = static_cast<int>(config["server"]["port"].asNumber());
+        
+        // Access an array
+        const auto& allowedUsers = config["allowedUsers"].asArray();
+        for (const auto& user : allowedUsers) {
+            std::cout << "User: " << user.asString() << std::endl;
+        }
+        
+        // Create or modify JSON data
+        JSONValue response;
+        response["status"] = "success";
+        response["timestamp"] = 1647267892;
+        
+        // You could add array manipulation
+        JSONValue::Array dataPoints;
+        for (int i = 0; i < 5; i++) {
+            JSONValue point;
+            point["x"] = i;
+            point["y"] = i * i;
+            dataPoints.push_back(point);
+        }
+        response["data"] = dataPoints;
+        
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
+    }
+    
+    return 0;
+}
+
+TODO:  JSON serialization: json object to string
+
 ## Contributing
 
 ## License
