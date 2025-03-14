@@ -1,0 +1,10 @@
+^C:\USERS\JOELC\ONEDRIVE\DESKTOP\C++JSONPARSER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/joelc/OneDrive/Desktop/c++jsonparser -BC:/Users/joelc/OneDrive/Desktop/c++jsonparser/build --check-stamp-file C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

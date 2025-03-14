@@ -1,0 +1,5 @@
+C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/json_parser.dir
+C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/json_parser_tests.dir
+C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/joelc/OneDrive/Desktop/c++jsonparser/build/CMakeFiles/ZERO_CHECK.dir
